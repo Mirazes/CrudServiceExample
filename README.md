@@ -1,13 +1,13 @@
 # ServiceExample
 
 1. Lataa repositoryn sisältö ja avaa .sln tiedosto visual studiossa. (vs2019)
-2. Importtaa ServiceManual.postman_collection.json postmaniin, tämä sisältää rajapinnan dokumentoinnin.
+2. Importtaa ServiceExample.postman_collection.json postmaniin, tämä sisältää rajapinnan dokumentoinnin.
 3. Käynnistä ServiceExample.Web projekti
 
 Tässä vaiheessa on hyvä tarkistaa, että postmanin resurssien portti on oikea.
 
 4. Lähetä POST pyyntö http://localhost:61515/api/factorydevices/generate valitsemalla Postmanista resurssi ServiceManual/Laitteet/Generoi laitekanta. (Laitekannan pystyy myös poistamaan lähettämällä Poista laitekanta käsky)
-5. Rajapinta on nyt valmis testattavaksi Postaman kutsuilla ServiceManual/Huoltotehtävät/*
+5. Rajapinta on nyt valmis testattavaksi Postman kutsuilla ServiceManual/Huoltotehtävät/*
 
 
 Huom.
