@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceExample.ApplicationCore\ServiceExample.ApplicationCore.csproj" />
+    <ProjectReference Include="..\ServiceExample.Entity\ServiceExample.Entity.csproj" />
+    <ProjectReference Include="..\ServiceExample.Web\ServiceExample.Web.csproj" />
+  </ItemGroup>
+
+</Project>

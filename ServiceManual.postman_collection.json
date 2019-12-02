@@ -1,0 +1,151 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ServiceManual",
+		"_postman_id": "2f075768-9754-29b3-613e-0bf0c98314a9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Huoltotehtävät",
+			"description": "",
+			"item": [
+				{
+					"name": "Hae yksi huoltotehtävä id:llä",
+					"request": {
+						"url": "http://localhost:61515/api/v1/MaintenanceTasks/601124c6-8e58-4739-8fb3-9e054dd81b7f",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Palauttaa huoltotehtävän annetulla Guid:lla. (id)"
+					},
+					"response": []
+				},
+				{
+					"name": "Hae kaikki huoltotehtävät",
+					"request": {
+						"url": "http://localhost:61515/api/v1/MaintenanceTasks",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Palauttaa kaikki tietokantaan kirjatut huoltotehtävät. Järjestetään ensiksi kriittisyyden mukaan ja sitten kirjausajankohdan mukaan."
+					},
+					"response": []
+				},
+				{
+					"name": "Lisää uusi huoltotehtävä",
+					"request": {
+						"url": "http://localhost:61515/api/v1/MaintenanceTasks",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FactoryDeviceId\" : 125,\n\t\"Description\" : \"Maajyrän korjaus\",\n\t\"PriorityId\" : 1\n}"
+						},
+						"description": "Uuden huoltotehtävän lisäys.\n\nBody:\n{\n\t\"FactoryDeviceId\" : 125,\n\t\"Description\" : \"Maajyrän korjaus\",\n\t\"PriorityId\" : 1\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Päivitä huoltotehtävä",
+					"request": {
+						"url": "http://localhost:61515/api/v1/MaintenanceTasks/601124c6-8e58-4739-8fb3-9e054dd81b7f",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FactoryDeviceId\" : 115,\n\t\"Description\" : \"Katujyrän päivitys\",\n\t\"PriorityId\" :1,\n\t\"TaskIsCompleted\" : false\n}"
+						},
+						"description": "Huoltotehtävän päivitys, factoryMaintenanceTaskId arvon saa hakemalla kaikki järjestelmässä olevat huoltotehtävät.\n\nBody:\n{\n\t\"FactoryDeviceId\" : 525,\n\t\"Description\" : \"uusi härpäke\",\n\t\"PriorityId\" : 2,\n\t\"TaskIsCompleted\" : false\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Poisto huoltotehtävä",
+					"request": {
+						"url": "http://localhost:61515/api/v1/MaintenanceTasks/d4959677-13ab-4279-bfa1-1dfeb56b3fff",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Poistaa huoltotehtävän annetulla Guid:lla. (id)"
+					},
+					"response": []
+				},
+				{
+					"name": "Hae kaikki laitetta koskevat huoltotehtävät",
+					"request": {
+						"url": "http://localhost:61515/api/v1/MaintenanceTasks/Devices/126",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Huoltotehtävien hakeminen laitetunnuksella. Järjestetään ensiksi kriittisyyden mukaan ja sitten kirjauksen mukaan. LaiteId:n saa hakemalla kaikki kannassa olevat laitteet \"Hae kaikki laitteet\" haulla."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Laitteet",
+			"description": "",
+			"item": [
+				{
+					"name": "Generoi laitekanta",
+					"request": {
+						"url": "http://localhost:61515/api/factorydevices/generate",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": "Tämä käsky lukee .csv tiedoston ja luo laitteet kantaan automaattisesti."
+					},
+					"response": []
+				},
+				{
+					"name": "Poista laitekanta",
+					"request": {
+						"url": "http://localhost:61515/api/factorydevices/clear",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": "Tämä käsky tyhjentää laitekannan kannasta."
+					},
+					"response": []
+				},
+				{
+					"name": "Hae kaikki laitteet",
+					"request": {
+						"url": "http://localhost:61515/api/factorydevices",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Palauttaa kaikki tietokannassa olevat laitteet."
+					},
+					"response": []
+				},
+				{
+					"name": "Hae yksittäinen laite",
+					"request": {
+						"url": "http://localhost:61515/api/factorydevices/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Palauttaa yhden laitteen tietokannasta annetulla identifikaatilla."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

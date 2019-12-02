@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{45B07AE1-339E-4C10-9AFA-699507BDB0D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceExample.ApplicationCore", "ServiceExample.ApplicationCore\ServiceExample.ApplicationCore.csproj", "{08BF9967-CB59-4759-9955-5F89BD40E5B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceExample.Entity", "ServiceExample.Entity\ServiceExample.Entity.csproj", "{14D1491D-DC0D-4375-9B2E-3B28B2B5EEB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceExample.UnitTests", "ServiceExample.UnitTests\ServiceExample.UnitTests.csproj", "{1ECAEA3A-A03E-4851-B1F3-27577995129D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceExample.Web", "ServiceExample.Web\ServiceExample.Web.csproj", "{2C3B617B-4C34-4109-ABF2-89AD7B741C91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{84B137C4-BF5E-4F18-B8EF-B7B281F02F0F}"
+	ProjectSection(SolutionItems) = preProject
+		Architecture\Dependencies Graph.png = Architecture\Dependencies Graph.png
+		Architecture\Examplekuva1.png = Architecture\Examplekuva1.png
+		Architecture\Examplekuva2.png = Architecture\Examplekuva2.png
+		Architecture\Examplekuva3.png = Architecture\Examplekuva3.png
+		Architecture\Examplekuva4.png = Architecture\Examplekuva4.png
+		Architecture\Examplekuva5.png = Architecture\Examplekuva5.png
+		Architecture\Examplekuva6.png = Architecture\Examplekuva6.png
+		Architecture\Examplekuva7.png = Architecture\Examplekuva7.png
+		Architecture\Examplekuva8.png = Architecture\Examplekuva8.png
+		Architecture\Examplekuva9.png = Architecture\Examplekuva9.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08BF9967-CB59-4759-9955-5F89BD40E5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08BF9967-CB59-4759-9955-5F89BD40E5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08BF9967-CB59-4759-9955-5F89BD40E5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08BF9967-CB59-4759-9955-5F89BD40E5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D1491D-DC0D-4375-9B2E-3B28B2B5EEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D1491D-DC0D-4375-9B2E-3B28B2B5EEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D1491D-DC0D-4375-9B2E-3B28B2B5EEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D1491D-DC0D-4375-9B2E-3B28B2B5EEB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ECAEA3A-A03E-4851-B1F3-27577995129D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ECAEA3A-A03E-4851-B1F3-27577995129D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ECAEA3A-A03E-4851-B1F3-27577995129D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ECAEA3A-A03E-4851-B1F3-27577995129D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3B617B-4C34-4109-ABF2-89AD7B741C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3B617B-4C34-4109-ABF2-89AD7B741C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3B617B-4C34-4109-ABF2-89AD7B741C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3B617B-4C34-4109-ABF2-89AD7B741C91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1ECAEA3A-A03E-4851-B1F3-27577995129D} = {45B07AE1-339E-4C10-9AFA-699507BDB0D7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C0537FE-2BDA-46C3-83AB-C3C144C8DB17}
+	EndGlobalSection
+EndGlobal
