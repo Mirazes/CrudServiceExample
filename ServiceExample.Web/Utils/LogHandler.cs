@@ -3,7 +3,10 @@ using System.IO;
 
 namespace ServiceExample.Web.Utils
 {
-    public class ErrorHandler
+    /// <summary>
+    /// Contains utils for message logging.
+    /// </summary>
+    public class LogHandler
     {
         private static readonly string LogPath = $"{Directory.GetCurrentDirectory()}\\logs\\{DateTime.Now}.txt";
 

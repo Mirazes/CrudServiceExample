@@ -42,7 +42,7 @@ namespace ServiceExample.Web.Controllers
             }
             catch (Exception e)
             {
-                ErrorHandler.LogError(e.Message);
+                LogHandler.LogError(e.Message);
                 return new ConflictResult();
             }
         }
@@ -64,7 +64,7 @@ namespace ServiceExample.Web.Controllers
             }
             catch (Exception e)
             {
-                ErrorHandler.LogError(e.Message);
+                LogHandler.LogError(e.Message);
                 return new ConflictResult();
             }
         }
@@ -82,7 +82,7 @@ namespace ServiceExample.Web.Controllers
             }
             catch (Exception e)
             {
-                ErrorHandler.LogError(e.Message);
+                LogHandler.LogError(e.Message);
                 return new ConflictResult();
             }
         }
@@ -104,7 +104,7 @@ namespace ServiceExample.Web.Controllers
             }
             catch (Exception e)
             {
-                ErrorHandler.LogError(e.Message);
+                LogHandler.LogError(e.Message);
                 return new ConflictResult();
             }
 

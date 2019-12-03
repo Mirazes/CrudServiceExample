@@ -22,7 +22,7 @@ namespace ServiceExample.Web.Adapters
             {
                 factoryMaintenanceTaskId = factoryMaintenanceTasks.FactoryMaintenanceTaskId,
                 description = factoryMaintenanceTasks.Description,
-                taskIsCompleted = factoryMaintenanceTasks.TaskIsCompleted ? "Maintained" : "Open",
+                taskIsCompleted = factoryMaintenanceTasks.TaskIsCompleted ? "True" : "False",
                 priority = factoryMaintenanceTasks.PriorityId.ToString("g"),
                 taskRegistrationDate = factoryMaintenanceTasks.TaskRegistrationDate,
                 factoryDevice = factoryMaintenanceTasks.FactoryDevice,

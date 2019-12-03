@@ -9,6 +9,8 @@ using ServiceExample.Entity.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ServiceExample.Web.Adapters;
+using ServiceExample.Web.Utils;
 
 namespace ServiceExample.Web.Controllers
 {
@@ -36,8 +38,18 @@ namespace ServiceExample.Web.Controllers
         [Route("api/v1/MaintenanceTasks")]
         [HttpGet]
         public object GetAllFactoryMaintenanceTasks()
-            => Adapters.FactoryMaintenanceTaskAdapter
-                .ToAnonymousObject(_factoryMaintenanceTaskService.GetAllFactoryMaintenanceTasks());
+        {
+            try
+            {
+                return FactoryMaintenanceTaskAdapter
+                    .ToAnonymousObject(_factoryMaintenanceTaskService.GetAllFactoryMaintenanceTasks());
+            }
+            catch (Exception e)
+            {
+                LogHandler.LogError(e.Message);
+                return new ConflictResult();
+            }
+        }
 
         /// <summary>
         /// Call service layer to obtain single maintenance task by given taskGuid parameter
@@ -49,13 +61,21 @@ namespace ServiceExample.Web.Controllers
         [HttpGet]
         public object GetSingleFactoryMaintenanceTask(Guid taskGuid)
         {
-            var singleFactoryMaintenanceTask = _factoryMaintenanceTaskService.GetSingleFactoryMaintenanceTasks(taskGuid);
-            if (singleFactoryMaintenanceTask.FactoryMaintenanceTaskId != taskGuid)
+            try
             {
-                return NotFound();
-            }
+                var singleFactoryMaintenanceTask = _factoryMaintenanceTaskService.GetSingleFactoryMaintenanceTasks(taskGuid);
+                if (singleFactoryMaintenanceTask.FactoryMaintenanceTaskId != taskGuid)
+                {
+                    return NotFound();
+                }
 
-            return Ok(Adapters.FactoryMaintenanceTaskAdapter.ToAnonymousObject(singleFactoryMaintenanceTask));
+                return Ok(FactoryMaintenanceTaskAdapter.ToAnonymousObject(singleFactoryMaintenanceTask));
+            }
+            catch (Exception e)
+            {
+                LogHandler.LogError(e.Message);
+                return new ConflictResult();
+            }
         }
 
         /// <summary>
@@ -67,7 +87,18 @@ namespace ServiceExample.Web.Controllers
         [Route("api/v1/MaintenanceTasks/Devices/{factoryDeviceId}")]
         [HttpGet]
         public object GetFilteredByDeviceFactoryMaintenanceTasks(int factoryDeviceId)
-        => Adapters.FactoryMaintenanceTaskAdapter.ToAnonymousObject(_factoryMaintenanceTaskService.GetFilteredByDeviceFactoryMaintenanceTasks(factoryDeviceId));
+        {
+            try
+            {
+                return FactoryMaintenanceTaskAdapter.ToAnonymousObject(
+                    _factoryMaintenanceTaskService.GetFilteredByDeviceFactoryMaintenanceTasks(factoryDeviceId));
+            }
+            catch (Exception e)
+            {
+                LogHandler.LogError(e.Message);
+                return new ConflictResult();
+            }
+        }
 
         /// <summary>
         /// Call service layer to create new maintenance task along with json in body.
@@ -78,14 +109,22 @@ namespace ServiceExample.Web.Controllers
         [HttpPost]
         public IActionResult CreateFactoryMaintenanceTask([FromBody] JObject json)
         {
-            // Convert json from body to FactoryMaintenanceTask object.
-            var created = false;
-            var factoryMaintenanceTaskJsonObject = json.ToObject<FactoryMaintenanceTaskDto>();
-            if (factoryMaintenanceTaskJsonObject != null)
-                created = _factoryMaintenanceTaskService.CreateFactoryMaintenanceTask(factoryMaintenanceTaskJsonObject);
+            try
+            {
+                // Convert json from body to FactoryMaintenanceTask object.
+                var created = false;
+                var factoryMaintenanceTaskJsonObject = json.ToObject<FactoryMaintenanceTaskDto>();
+                if (factoryMaintenanceTaskJsonObject != null)
+                    created = _factoryMaintenanceTaskService.CreateFactoryMaintenanceTask(factoryMaintenanceTaskJsonObject);
 
-            if (created) return new CreatedAtActionResult("CreateFactoryMaintenanceTask", "FactoryMaintenanceTasks", null, null);
-            return new ConflictResult();
+                if (created) return new CreatedAtActionResult("CreateFactoryMaintenanceTask", "FactoryMaintenanceTasks", null, null);
+                return new ConflictResult();
+            }
+            catch (Exception e)
+            {
+                LogHandler.LogError(e.Message);
+                return new ConflictResult();
+            }
         }
 
         /// <summary>
@@ -98,18 +137,26 @@ namespace ServiceExample.Web.Controllers
         [HttpPut]
         public IActionResult UpdateFactoryMaintenanceTask([FromBody]JObject json, Guid taskGuid)
         {
-            // Convert json from body to FactoryMaintenanceTask object.
-            var updated = false;
-            if(json == null) return new ConflictResult();
-            var factoryMaintenanceTaskJsonObject = json.ToObject<FactoryMaintenanceTaskDto>();
-            if (factoryMaintenanceTaskJsonObject != null)
+            try
             {
-                factoryMaintenanceTaskJsonObject.FactoryMaintenanceTaskId = taskGuid;
-                updated = _factoryMaintenanceTaskService.UpdateFactoryMaintenanceTask(factoryMaintenanceTaskJsonObject);
-            }
+                // Convert json from body to FactoryMaintenanceTask object.
+                var updated = false;
+                if(json == null) return new ConflictResult();
+                var factoryMaintenanceTaskJsonObject = json.ToObject<FactoryMaintenanceTaskDto>();
+                if (factoryMaintenanceTaskJsonObject != null)
+                {
+                    factoryMaintenanceTaskJsonObject.FactoryMaintenanceTaskId = taskGuid;
+                    updated = _factoryMaintenanceTaskService.UpdateFactoryMaintenanceTask(factoryMaintenanceTaskJsonObject);
+                }
 
-            if (updated) return new OkResult();
-            return new ConflictResult();
+                if (updated) return new OkResult();
+                return new ConflictResult();
+            }
+            catch (Exception e)
+            {
+                LogHandler.LogError(e.Message);
+                return new ConflictResult();
+            }
         }
 
         /// <summary>
@@ -121,10 +168,18 @@ namespace ServiceExample.Web.Controllers
         [HttpDelete]
         public IActionResult DeleteFactoryMaintenanceTask(Guid taskGuid)
         {
-            var deleted = _factoryMaintenanceTaskService.DeleteFactoryMaintenanceTask(taskGuid);
+            try
+            {
+                var deleted = _factoryMaintenanceTaskService.DeleteFactoryMaintenanceTask(taskGuid);
 
-            if (deleted) return new OkResult();
-            return new ConflictResult();
+                if (deleted) return new OkResult();
+                return new ConflictResult();
+            }
+            catch (Exception e)
+            {
+                LogHandler.LogError(e.Message);
+                return new ConflictResult();
+            }
         }
     }
 }
